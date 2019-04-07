@@ -28,7 +28,7 @@ class Rectangle:
 
 class Individual:
     def __init__(self):
-        self.circles = self.form()
+        self.rectangles = self.form()
         self.points = self.getPoints()
 
     def form(self):
@@ -42,19 +42,19 @@ class Individual:
         for a in range(sizeOfMatrix):
             for b in range(sizeOfMatrix):
                if(myRandomizer(mutateRectangle)):
-                   self.circles[a][b].change()
+                   self.rectangles[a][b].change()
         self.points = self.getPoints()
 
     def createImage(self):
         newImage = Image.new("RGB", [sizeOfSide, sizeOfSide], ImageColor.getrgb("white"))
         drawing = ImageDraw.Draw(newImage)
-        for idRow, row in enumerate(self.circles):
-            for idCol, circle in enumerate(row):
+        for idRow, row in enumerate(self.rectangles):
+            for idCol, rectangle in enumerate(row):
                 startX = 1 + idCol*sizeOfRectangle
                 startY = 1 + idRow*sizeOfRectangle
                 endX = startX + sizeOfRectangle
                 endY = startY + sizeOfRectangle
-                drawing.rectangle([(startX, startY), (endX, endY)], circle.color)
+                drawing.rectangle([(startX, startY), (endX, endY)], rectangle.color)
         return newImage
 
     def getPoints(self):
@@ -67,15 +67,15 @@ class Individual:
         for a in range(sizeOfMatrix):
             for b in range(sizeOfMatrix):
                 if(myRandomizer(0.5)):
-                    self.circles[a][b].color = indFirst.circles[a][b].color
+                    self.rectangles[a][b].color = indFirst.rectangles[a][b].color
                 else:
-                    self.circles[a][b].color = indSecond.circles[a][b].color
+                    self.rectangles[a][b].color = indSecond.rectangles[a][b].color
         self.points = self.getPoints()
 
     def ideal(self):
         for a in range(sizeOfMatrix):
             for b in range(sizeOfMatrix):
-                self.circles[a][b].ideal()
+                self.rectangles[a][b].ideal()
         self.points = self.getPoints()
 
 class Population:
