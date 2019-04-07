@@ -8,7 +8,7 @@ sizeOfRectangle = 15
 sizeOfPopulation = 100
 mutateRectangle = 0.00125
 mutateIndividual = 1
-image = Image.open('rm.png') #type:Image.Image
+image = Image.open('rm.png')
 colors = image.getcolors(sizeOfSide*sizeOfSide)
 
 def myRandomizer(probability):
